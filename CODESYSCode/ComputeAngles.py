@@ -1,5 +1,4 @@
 
-import numpy as np
 from math import atan, sqrt, acos, tau
 
 def boundNormalize(v):
