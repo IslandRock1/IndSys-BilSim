@@ -1,8 +1,25 @@
 
 from math import atan, sqrt, acos, tau
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+
+from tqdm import tqdm
+
+deg = lambda a : a * 360.0 / tau
+rad = lambda a : (a / 360) * tau
 
 def boundNormalize(v):
-    return min(1, max(-1, v))
+    didBound = False
+    if (v > 1):
+        v = 1
+        didBound = True
+    
+    if (v < -1):
+        v = -1
+        didBound = True
+
+    return v, didBound
 
 def computeAngles(roll, pitch):
     delta = 0.08
@@ -12,26 +29,84 @@ def computeAngles(roll, pitch):
 
     l = 1.75
 
-    tmp = l / 2 * atan(p / s1)
+    tmp = l / 2 * atan(r / s1)
     p1 = delta + tmp
     p0 = delta - tmp
 
-    p2 = delta - (l * sqrt(3) / 2) * atan(r / s0)
+    tmp = (l * sqrt(3) / 2) * atan(-p / s0) / 2.0
+    p2 = delta - tmp
 
-    print(f"Heights: {p0, p1, p2}")
+    p0 += tmp
+    p1 += tmp
 
+    # print(f"Heights: {p0, p1, p2}")
+
+    p0, didBound0 = boundNormalize(- (p0 - delta) / delta)
+    p1, didBound1 = boundNormalize(- (p1 - delta) / delta)
+    p2, didBound2 = boundNormalize(- (p2 - delta) / delta)
+    didBound = (didBound0 or didBound1 or didBound2)
     # acos is limited to acos(x), x in [-1, 1]
-    a0 = acos(boundNormalize(- (p0 - delta) / delta))
-    a1 = acos(boundNormalize(- (p1 - delta) / delta))
-    a2 = acos(boundNormalize(- (p2 - delta) / delta))
+    a0 = acos(p0)
+    a1 = acos(p1)
+    a2 = acos(p2)
 
-    deg = lambda a : a * 360.0 / tau
+    return (a0, a1, a2), (deg(a0), deg(a1), deg(a2)), didBound
 
-    return (a0, a1, a2), (deg(a0), deg(a1), deg(a2))
+def testFunc():
+    roll = 10.0 # Deg
+    pitch = -6.0 # Deg
 
-rad = lambda a : (a / 360) * tau
-roll = 3.0 # Deg
-pitch = 5.25 # Deg
+    rads, degs, didBound = computeAngles(rad(roll), rad(pitch))
+    print(f"Degs: {degs[0]} | {degs[1]} | {degs[2]}. didBound: {didBound}")
 
-rads, degs = computeAngles(rad(roll), rad(pitch))
-print(f"Degs: {degs[0]} | {degs[1]} | {degs[2]}")
+def findFuncLimits():
+    outPut = []
+
+    size = 6.5
+    numPoints = 100
+
+    notBounded = 0
+    isBounded = 0
+
+    with tqdm(total=numPoints, desc="Processing") as pbar:
+        for i, r in enumerate(np.linspace(-size, size, numPoints)):
+            pbar.n = i  # Sum all progress values
+            pbar.refresh()
+            
+            out = []
+            for p in np.linspace(-size, size, numPoints):
+                _, _, didBound = computeAngles(rad(r), rad(p))
+                out.append(int(didBound))
+
+                if didBound:
+                    isBounded += 1
+                else:
+                    notBounded += 1
+
+            outPut.append(out)
+    
+    print()
+    print(f"{notBounded = } | {isBounded = }")
+    plt.imshow(outPut, interpolation='none', cmap="viridis")
+
+    true_patch = mpatches.Patch(color=plt.cm.viridis(1.0), label="Impossible")   # Yellow
+    false_patch = mpatches.Patch(color=plt.cm.viridis(0.0), label="Possible")  # Purple
+
+    # Add legend
+    plt.legend(handles=[true_patch, false_patch], loc="upper right")
+
+    ticks = list(np.linspace(0, numPoints, 8))
+    values = np.round(np.array(np.linspace(-size, size, 8)), 2)
+
+    plt.title("Physicly possible roll and pitch for outer hole on motor fastener")
+
+
+    plt.xticks(ticks=ticks, labels=values)
+    plt.yticks(ticks=ticks, labels=values)
+
+    plt.ylabel("Roll")
+    plt.xlabel("Pitch")
+    plt.show()
+
+#testFunc()
+findFuncLimits()
