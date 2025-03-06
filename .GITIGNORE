@@ -3,3 +3,8 @@
 *.SYM
 *.SDB
 *.ECI
+*.~u
+*.compileinfo
+*.precompilecache
+*.opt
+*.DFR
