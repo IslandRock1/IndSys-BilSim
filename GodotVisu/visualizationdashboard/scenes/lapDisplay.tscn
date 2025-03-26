@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://40wk2flxvtr8"]
+
+[ext_resource type="Script" uid="uid://c70thirpd508b" path="res://scenes/rings_lap_display.gd" id="1_cjapy"]
+
+[node name="LapDisplay" type="Node2D"]
+
+[node name="RingsLapDisplay" type="Node2D" parent="."]
+script = ExtResource("1_cjapy")
