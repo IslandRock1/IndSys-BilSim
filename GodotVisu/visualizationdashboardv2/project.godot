@@ -10,18 +10,7 @@ config_version=5
 
 [application]
 
-config/name="VisualizationDashboard"
-run/main_scene="uid://cpmbinkpmg1ar"
+config/name="VisualizationDashBoardV2"
+run/main_scene="uid://cofhqi3p6hner"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
-
-[autoload]
-
-Global="*res://scripts/Global.gd"
-GlobalFunctions="*res://scripts/GlobalFunctions.gd"
-
-[display]
-
-window/size/viewport_width=960
-window/size/viewport_height=540
-window/stretch/mode="canvas_items"

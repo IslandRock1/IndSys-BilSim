@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqledcrq6yvik"]
+
+[ext_resource type="Script" uid="uid://chnlv3qptkq0w" path="res://scripts/ThrottleDisplayScripts.gd" id="1_qh4mt"]
+
+[node name="ThrottleDisplay" type="Node2D"]
+
+[node name="Scripts" type="Node2D" parent="."]
+script = ExtResource("1_qh4mt")

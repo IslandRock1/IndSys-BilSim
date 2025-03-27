@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://40wk2flxvtr8"]
+[gd_scene load_steps=3 format=3 uid="uid://40wk2flxvtr8"]
 
-[ext_resource type="Script" uid="uid://c70thirpd508b" path="res://scenes/rings_lap_display.gd" id="1_cjapy"]
+[ext_resource type="Script" uid="uid://c70thirpd508b" path="res://scripts/rings_lap_display.gd" id="1_cjapy"]
+[ext_resource type="Script" uid="uid://dbqo51of5hl33" path="res://scripts/lap_display_time.gd" id="2_3v4l7"]
 
 [node name="LapDisplay" type="Node2D"]
 
 [node name="RingsLapDisplay" type="Node2D" parent="."]
 script = ExtResource("1_cjapy")
+
+[node name="LapDisplayTime" type="Label" parent="."]
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 120
+text = "Hello"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_3v4l7")

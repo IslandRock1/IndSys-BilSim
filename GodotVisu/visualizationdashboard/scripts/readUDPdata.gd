@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var udp = PacketPeerUDP.new()
 var port = 20777
@@ -21,9 +21,11 @@ func decode_data(byte_data: PackedByteArray) -> Array:
 	return floats
 
 func storeDataGlobally(decodedFloats: Array) -> void:
+	if len(decodedFloats) < 60: return
+	
 	Global.udpCurrentLaptime = decodedFloats[1]
 	Global.udpCurrentLapDist = decodedFloats[2]
-	Global.udpTotalDist = decodedFloats[3]
+	Global.udpDistanceDrivenOverall = decodedFloats[3]
 	Global.udpVelocity = decodedFloats[7]
 	Global.udpRoll = decodedFloats[11]
 	Global.udpPitch = decodedFloats[14]
@@ -39,19 +41,19 @@ func storeDataGlobally(decodedFloats: Array) -> void:
 	Global.udpCurrentLapNumber = decodedFloats[36]
 	Global.udpEngineRPM = decodedFloats[37]
 	Global.udpNumberOfLaps = decodedFloats[60]
-	Global.udpTotalDist = decodedFloats[61]
+	Global.udpTrackDistance = decodedFloats[61]
+
+func printInfo() -> void:
+	print("LapTime:", Global.udpCurrentLaptime, "| Gear:", Global.udpGear)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	Global.udpVelocity += 0.5
-	if Global.udpVelocity > 300:
-		Global.udpVelocity = 0.0
+func _process(_delta: float) -> void:
+	var num = udp.get_available_packet_count()
+	for i in range(num - 1):
+		udp.get_packet()
 	
-	Global.udpNumberOfLaps = 3.0
-	Global.udpTrackDistance = 10000.0
-	Global.udpTotalDist += 10.0
-	Global.udpCurrentLapDist += 10.0
+	var data = udp.get_packet()
 	
-	if (Global.udpCurrentLapDist > Global.udpTrackDistance / Global.udpNumberOfLaps):
-		Global.udpCurrentLapDist -= Global.udpTrackDistance / Global.udpNumberOfLaps
-	
+	var floats = decode_data(data)
+	storeDataGlobally(floats)
+	# printInfo()

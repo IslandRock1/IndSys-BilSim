@@ -10,7 +10,8 @@ var top_left = Vector2(columns, rows) * cell_size * (-0.5)
 # name : [Width/Height vector, pos vector, currentInfo vector (height, width
 var places = {
 	"Speedometer": [Vector2(15, 15), Vector2(5, 5), Vector2(1000, 1000)],
-	"LapDisplay": [Vector2(15, 15), Vector2(30, 5), Vector2(1000, 1000)]
+	"LapDisplay": [Vector2(15, 15), Vector2(30, 5), Vector2(1000, 1000)],
+	"ThrottleDisplay": [Vector2(15, 15), Vector2(60, 5), Vector2(1000, 1000)]
 }
 
 func _draw() -> void:
@@ -31,3 +32,23 @@ func place(child: Node):
 func _ready() -> void:
 	for child in get_children():
 		place(child)
+
+#var columns = 1920 / cell_size
+#var rows = 1080 / cell_size
+#var top_left = Vector2(columns, rows) * cell_size * (-0.5)
+
+func update_size() -> void:
+	var new_size = get_viewport_rect().size
+	columns = new_size.x / cell_size
+	rows = new_size.y / cell_size
+	
+	print("Updated size")
+	
+	for child in get_children():
+		place(child)
+	
+
+func _process(delta: float) -> void:
+	if size != get_viewport_rect().size:
+		size = get_viewport_rect().size
+		update_size()
