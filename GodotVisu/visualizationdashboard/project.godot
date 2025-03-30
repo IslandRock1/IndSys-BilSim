@@ -18,10 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scripts/Global.gd"
-GlobalFunctions="*res://scripts/GlobalFunctions.gd"
 
 [display]
 
 window/size/viewport_width=960
 window/size/viewport_height=540
 window/stretch/mode="canvas_items"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0562272, 7.36551e-06, 0.0659164, 1)

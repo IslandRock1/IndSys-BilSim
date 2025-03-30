@@ -11,17 +11,22 @@ var top_left = Vector2(columns, rows) * cell_size * (-0.5)
 var places = {
 	"Speedometer": [Vector2(15, 15), Vector2(5, 5), Vector2(1000, 1000)],
 	"LapDisplay": [Vector2(15, 15), Vector2(30, 5), Vector2(1000, 1000)],
-	"ThrottleDisplay": [Vector2(15, 15), Vector2(60, 5), Vector2(1000, 1000)]
+	"ThrottleDisplay": [Vector2(15, 15), Vector2(60, 5), Vector2(1000, 1000)],
+	"CarVisu3d": [Vector2(30, 30), Vector2(30, 10), Vector2(1000, 1000)]
 }
 
-func _draw() -> void:
-	for x in range(-columns / 2, columns):
-		var top = Vector2(x * cell_size, -540)
-		var bot = Vector2(x * cell_size, 540)
-		
-		draw_line(top, bot, Color(1, 1, 1, 0.2))
+#func _draw() -> void:
+	#for x in range(-columns / 2, columns):
+		#var top = Vector2(x * cell_size, -540)
+		#var bot = Vector2(x * cell_size, 540)
+		#
+		#draw_line(top, bot, Color(1, 1, 1, 0.2))
 
 func place(child: Node):
+	#if child.name == "CarVisu3d":
+		#child.position = Vector2.ZERO
+		#return
+	
 	var info = places[child.name]
 	child.scale = info[0] * cell_size / info[2]
 	
