@@ -4,7 +4,7 @@ extends Node3D
 @export var cell_size := 1.0  # Size of each cell
 @export var grid_color := Color(0.5, 0.5, 0.5, 0.5)
 @export var line_width := 0.1
-@export var height = -5.0
+@export var height = -3.0
 
 func _ready():
 	var mesh_instance = MeshInstance3D.new()

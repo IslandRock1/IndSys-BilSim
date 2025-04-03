@@ -1,24 +1,34 @@
 extends MeshInstance3D
 
+var t = 0.0
+var prevPitch = 0.0
+var prevRoll = 0.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func ready() -> void:
+	prevPitch = Global.udpPitch
+	prevRoll = Global.udpRoll
+	
+	rotate_object_local(Vector3.RIGHT, -PI / 2)
+
+func renderPlatform() -> void:
 	var mesh = ArrayMesh.new()
 	var surface_tool = SurfaceTool.new()
 	
 	surface_tool.begin(Mesh.PRIMITIVE_TRIANGLES)
 	
-	var lenght = 5.0
-	var width = 1.0
+	var lenght = 3.0
+	var width = 0.75
 	
-	var baseLevel = 0.0
+	var baseLevel = -0.2
 	var topLevel = 0.2
 	
 	var topLeft = Vector3(-width, baseLevel, lenght)
 	var topRight = Vector3(width, baseLevel, lenght)
-	var shortLine = Vector3(0, 0, 3 * width / sqrt(3))
+	var shortLine = Vector3(0, 0, 2 * width / sqrt(3))
 	
 	var rotAx = Vector3(0, 1, 0)
+	var rollAx = Vector3(0, 0, 1)
+	var pitchAx = Vector3(1, 0, 0)
 	
 	var points = [
 		topLeft, topRight,
@@ -83,13 +93,15 @@ func _ready() -> void:
 		vertices.append(p)
 	
 	for p in points:
-		vertices.append(p + Vector3(0, topLevel, 0))
-	
-	print(vertices)
-	
+		vertices.append(p + Vector3(0, topLevel - baseLevel, 0))
+
 	# Add vertices to the surface
-	for vertex in vertices:
-		surface_tool.add_vertex(vertex)
+	for vertex: Vector3 in vertices:
+		
+		var rotated = vertex.rotated(rollAx, Global.udpRoll)
+		rotated = rotated.rotated(pitchAx, Global.udpPitch - PI / 2.0)
+		
+		surface_tool.add_vertex(rotated)
 	
 	# Add faces (triangles) based on indices
 	for i in range(0, indices.size(), 3):
@@ -104,4 +116,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	t += delta
+	rotate_object_local(Vector3.BACK, Global.udpPitch - prevPitch)
+	rotate_object_local(Vector3.RIGHT, Global.udpRoll - prevRoll)
+	prevPitch = Global.udpPitch
+	prevRoll = Global.udpRoll

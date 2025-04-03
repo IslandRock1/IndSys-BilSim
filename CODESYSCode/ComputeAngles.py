@@ -1,10 +1,11 @@
 
-from math import atan, sqrt, acos, tau
+from math import atan, sqrt, acos, tau, sin
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
 from tqdm import tqdm
+from time import perf_counter
 
 deg = lambda a : a * 360.0 / tau
 rad = lambda a : (a / 360) * tau
@@ -29,11 +30,11 @@ def computeAngles(roll, pitch):
 
     l = 1.75
 
-    tmp = l / 2 * atan(r / s1)
+    tmp = l / 2 * sin(r / s1)
     p1 = delta + tmp
     p0 = delta - tmp
 
-    tmp = (l * sqrt(3) / 2) * atan(-p / s0) / 2.0
+    tmp = (l * sqrt(3) / 2) * sin(-p / s0) / 2.0
     p2 = delta - tmp
 
     p0 += tmp
@@ -63,7 +64,7 @@ def findFuncLimits():
     outPut = []
 
     size = 6.5
-    numPoints = 100
+    numPoints = 1000
 
     notBounded = 0
     isBounded = 0
@@ -108,5 +109,18 @@ def findFuncLimits():
     plt.xlabel("Pitch")
     plt.show()
 
+def timeFunc():
+
+    numPoints = 100
+    size = 0.113446401
+
+    t0 = perf_counter()
+    for pitch in np.linspace(-size, size, numPoints):
+        for roll in np.linspace(-size, size, numPoints):
+            computeAngles(roll, pitch)
+    t1 = perf_counter()
+    print(f"Time: {t1 - t0} seconds. Per call: {1000000 * (t1 - t0) / numPoints ** 2} us")
+
 #testFunc()
-findFuncLimits()
+# findFuncLimits()
+timeFunc()

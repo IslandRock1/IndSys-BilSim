@@ -5,8 +5,13 @@ var port = 20777
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	udp.set_dest_address("0.0.0.0", port)
-	udp.bind(port)
+	var err = udp.bind(port, "0.0.0.0")
+	print(err)
+	print(error_string(err))
+	if err != OK:
+		print("Not working at least")
+	else:
+		print("Err is OK")
 
 func decode_data(byte_data: PackedByteArray) -> Array:
 	var floats = []
@@ -26,7 +31,7 @@ func storeDataGlobally(decodedFloats: Array) -> void:
 	Global.udpCurrentLaptime = decodedFloats[1]
 	Global.udpCurrentLapDist = decodedFloats[2]
 	Global.udpDistanceDrivenOverall = decodedFloats[3]
-	Global.udpVelocity = decodedFloats[7]
+	Global.udpVelocity = decodedFloats[7] * 3.6
 	Global.udpRoll = decodedFloats[11]
 	Global.udpPitch = decodedFloats[14]
 	Global.udpThrottle = decodedFloats[29]
@@ -46,6 +51,7 @@ func storeDataGlobally(decodedFloats: Array) -> void:
 func printInfo() -> void:
 	print("LapTime:", Global.udpCurrentLaptime, "| Gear:", Global.udpGear)
 
+var t = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var num = udp.get_available_packet_count()
@@ -57,3 +63,6 @@ func _process(_delta: float) -> void:
 	var floats = decode_data(data)
 	storeDataGlobally(floats)
 	# printInfo()
+	
+	#t += _delta
+	#Global.udpThrottle = sin(t)

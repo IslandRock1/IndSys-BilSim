@@ -5,7 +5,7 @@ extends Camera3D
 @export var max_pitch : float = PI / 2.5   # Max pitch angle in degrees
 
 var current_rotation = Vector2.ZERO  # Stores the current mouse position
-var visuSize = 5.0
+var visuSize = 10.0
 var visuSizeSpeed = 0.2
 
 
