@@ -34,11 +34,12 @@ def computeAngles(roll, pitch):
     p1 = delta + tmp
     p0 = delta - tmp
 
-    tmp = (l * sqrt(3) / 2) * sin(-p / s0) / 2.0
-    p2 = delta - tmp
 
-    p0 += tmp
-    p1 += tmp
+    tmp = sin(-p / s0) / 2.0
+    p2 = delta - tmp * (l * sqrt(3))
+
+    p0 += tmp * (l * sqrt(3) / 6)
+    p1 += tmp * (l * sqrt(3) / 6)
 
     # print(f"Heights: {p0, p1, p2}")
 
@@ -122,5 +123,5 @@ def timeFunc():
     print(f"Time: {t1 - t0} seconds. Per call: {1000000 * (t1 - t0) / numPoints ** 2} us")
 
 #testFunc()
-# findFuncLimits()
-timeFunc()
+findFuncLimits()
+# timeFunc()
