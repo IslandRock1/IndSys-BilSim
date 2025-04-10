@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dadafubnipytc"]
+[gd_scene load_steps=11 format=3 uid="uid://dadafubnipytc"]
 
 [ext_resource type="Script" uid="uid://dgc2hr7x230ky" path="res://scripts/needleSpeedometer.gd" id="2_8hr10"]
 [ext_resource type="Script" uid="uid://bom24h6n6sra4" path="res://scripts/outerCircleSpeedometer.gd" id="3_d0s45"]
 [ext_resource type="Script" uid="uid://b4bi36m2v11wm" path="res://scripts/text_box.gd" id="3_v2trj"]
 [ext_resource type="FontFile" uid="uid://bipupax0vhsib" path="res://assets/OpenSans-VariableFont_wdth,wght.ttf" id="4_v2trj"]
 [ext_resource type="Script" uid="uid://c07akdfmpyore" path="res://scripts/labelSpeedometer.gd" id="5_y1qyy"]
+[ext_resource type="Script" uid="uid://xuf325258thn" path="res://scripts/speed_unit.gd" id="6_wmmkb"]
+[ext_resource type="Script" uid="uid://bjqw7mwi2g3ya" path="res://scripts/rpm_label.gd" id="7_dya3h"]
+[ext_resource type="Script" uid="uid://cc2l41717kd5" path="res://scripts/rpm_unit_label.gd" id="8_a3piq"]
+[ext_resource type="Script" uid="uid://k67vaa0xwcry" path="res://scripts/gear_indicator_label.gd" id="9_a5fxe"]
+[ext_resource type="Script" uid="uid://b4a0scbfhyoa8" path="res://scripts/gear_label.gd" id="10_x263n"]
 
 [node name="Speedometer" type="Node2D"]
 
@@ -23,7 +28,7 @@ offset_top = -100.0
 offset_right = 150.0
 offset_bottom = 100.0
 theme_override_fonts/font = ExtResource("4_v2trj")
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 400
 text = "Hello"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -34,7 +39,32 @@ offset_left = -206.0
 offset_top = -44.0
 offset_right = 206.0
 offset_bottom = 238.0
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 100
 text = "km/h"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("6_wmmkb")
+
+[node name="rpmLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 200
+script = ExtResource("7_dya3h")
+
+[node name="rpmUnitLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 100
+script = ExtResource("8_a3piq")
+
+[node name="gearIndicatorLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 100
+script = ExtResource("9_a5fxe")
+
+[node name="gearLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 200
+script = ExtResource("10_x263n")

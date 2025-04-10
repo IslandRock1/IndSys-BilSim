@@ -18,3 +18,4 @@ func _process(_delta: float) -> void:
 	tmpText += str(floori(timeSeconds))
 	
 	text = tmpText
+	add_theme_color_override("font_color", Global.textColor)

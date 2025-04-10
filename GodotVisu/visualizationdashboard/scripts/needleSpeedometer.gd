@@ -17,9 +17,9 @@ func mapSpeed() -> float:
 
 func _draw() -> void:
 	var angle = mapSpeed()
-	var length = 400.0
-	var endWidth = 4.0
-	var baseWidth = 30.0
+	var length = 1200.0
+	var endWidth = 13.0
+	var baseWidth = 50.0
 	
 	var endVector = Vector2(cos(deg_to_rad(angle)), sin(deg_to_rad(angle)))
 	var sideVector = Vector2(cos(deg_to_rad(angle + 90)), sin(deg_to_rad(angle + 90)))

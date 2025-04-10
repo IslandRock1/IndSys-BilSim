@@ -34,6 +34,16 @@ func _ready():
 	# Hide the mouse cursor while controlling the camera
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	update()
+	
+	var environment := Environment.new()
+
+	# Set background mode to COLOR
+	environment.background_mode = Environment.BG_COLOR
+
+	# Set the clear color
+	environment.background_color = Global.colorBackgroundBoxes
+	# Assign it to your camera
+	self.environment = environment
 
 func _process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):

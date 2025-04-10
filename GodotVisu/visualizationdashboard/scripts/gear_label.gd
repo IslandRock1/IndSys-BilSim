@@ -8,16 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	var speed = roundi(Global.udpVelocity)
-	var speedString = str(speed)
-	
-	var tmpText = ""
-	for i in range(3 - len(speedString)):
-		tmpText += "0"
-	
-	text = tmpText + speedString
-	
-	position = Vector2(-size.x / 2, -size.y * 1.0)
-	
+	text = str(roundi(Global.udpGear))
+	position = Vector2(size.x * 2.3, size.y * 0.5)
+
 	add_theme_color_override("font_color", Global.textColor)

@@ -35,4 +35,4 @@ toggle_fullscreen={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.0562272, 7.36551e-06, 0.0659164, 1)
+anti_aliasing/quality/msaa_2d=3

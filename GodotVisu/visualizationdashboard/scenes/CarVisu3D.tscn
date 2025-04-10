@@ -1,14 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctr22p8laquv1"]
 
-[ext_resource type="Script" uid="uid://g7cnq1wfvyi6" path="res://scenes/border_3d_visu.gd" id="1_auijq"]
-[ext_resource type="Script" uid="uid://c563pwlpn2g8k" path="res://scenes/mesh_instance_3dplatform.gd" id="1_i2j3r"]
-[ext_resource type="Script" uid="uid://dsoh6ssys1dc5" path="res://scenes/backgroundGrid.gd" id="1_wfn2m"]
-[ext_resource type="Script" uid="uid://m7wyup4snanf" path="res://scenes/camera_3d.gd" id="2_qsofs"]
+[ext_resource type="Script" uid="uid://g7cnq1wfvyi6" path="res://scripts/border_3d_visu.gd" id="1_auijq"]
+[ext_resource type="Script" uid="uid://c563pwlpn2g8k" path="res://scripts/mesh_instance_3dplatform.gd" id="1_i2j3r"]
+[ext_resource type="Script" uid="uid://dsoh6ssys1dc5" path="res://scripts/backgroundGrid.gd" id="1_wfn2m"]
+[ext_resource type="Script" uid="uid://m7wyup4snanf" path="res://scripts/camera_3d.gd" id="2_qsofs"]
 [ext_resource type="ArrayMesh" uid="uid://bvre66mgkmvml" path="res://assets/BilSimPlatform v1.obj" id="3_wmbl8"]
 
 [sub_resource type="Environment" id="Environment_auijq"]
 background_mode = 1
-background_color = Color(0.65413, 1.49205e-06, 0.397352, 1)
 
 [node name="CarVisu3d" type="SubViewportContainer"]
 clip_contents = true
@@ -52,6 +51,7 @@ script = ExtResource("1_i2j3r")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/CenterPlacement/MainNode"]
 transform = Transform3D(1, 0, 0, 0, 0.0964539, 0.995337, 0, -0.995337, 0.0964539, 0, 6.20123, 0.0163832)
+visible = false
 environment = SubResource("Environment_auijq")
 script = ExtResource("2_qsofs")
 

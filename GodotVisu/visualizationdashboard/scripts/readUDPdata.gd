@@ -1,5 +1,6 @@
 extends Control
 
+var simulatedTime = 0.0
 var udp = PacketPeerUDP.new()
 var port = 20777
 
@@ -60,7 +61,9 @@ func printInfo() -> void:
 	print("LapTime:", Global.udpCurrentLaptime, "| Gear:", Global.udpGear)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	simulatedTime += delta
+	
 	var num = udp.get_available_packet_count()
 	for i in range(num - 1):
 		udp.get_packet()
@@ -68,3 +71,17 @@ func _process(_delta: float) -> void:
 	var data = udp.get_packet()
 	var floats = decode_data(data)
 	storeDataGlobally(floats)
+	
+	Global.udpEngineRPM = round(sin(simulatedTime) * 10)
+	Global.udpEngineRPM = 3.5
+	Global.udpCurrentLapDist = fmod(simulatedTime, 10.0)
+	Global.udpCurrentLapDist = 3.0
+	Global.udpTrackDistance = 10 * 5
+	Global.udpCurrentLaptime = 703
+	
+	Global.udpCurrentLapNumber = 1
+	Global.udpNumberOfLaps = 5
+	Global.udpGear = 2
+	
+	Global.udpVelocity = roundi(sin(simulatedTime) * 300)
+	Global.udpThrottle = sin(simulatedTime)
