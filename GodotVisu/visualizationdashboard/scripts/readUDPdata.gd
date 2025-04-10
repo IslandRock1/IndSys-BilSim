@@ -3,15 +3,23 @@ extends Control
 var udp = PacketPeerUDP.new()
 var port = 20777
 
+@onready var previous_window = DisplayServer.window_get_mode()
+@onready var current_window = DisplayServer.window_get_mode()
+
+func _input(event):
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		current_window = DisplayServer.window_get_mode()
+		if current_window != 4:
+			previous_window = current_window
+			DisplayServer.window_set_mode(4)
+		else:
+			if previous_window == 4:
+				previous_window = 2
+			DisplayServer.window_set_mode(previous_window)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var err = udp.bind(port, "0.0.0.0")
-	print(err)
-	print(error_string(err))
-	if err != OK:
-		print("Not working at least")
-	else:
-		print("Err is OK")
+	udp.bind(port, "0.0.0.0")
 
 func decode_data(byte_data: PackedByteArray) -> Array:
 	var floats = []
@@ -51,7 +59,6 @@ func storeDataGlobally(decodedFloats: Array) -> void:
 func printInfo() -> void:
 	print("LapTime:", Global.udpCurrentLaptime, "| Gear:", Global.udpGear)
 
-var t = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var num = udp.get_available_packet_count()
@@ -59,10 +66,5 @@ func _process(_delta: float) -> void:
 		udp.get_packet()
 	
 	var data = udp.get_packet()
-	
 	var floats = decode_data(data)
 	storeDataGlobally(floats)
-	# printInfo()
-	
-	#t += _delta
-	#Global.udpThrottle = sin(t)
