@@ -9,3 +9,7 @@
 *.opt
 *.DFR
 *.exe
+*.cfg
+*.cache
+*.bin
+*.bootinfo
