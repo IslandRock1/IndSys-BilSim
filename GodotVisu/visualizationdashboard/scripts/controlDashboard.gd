@@ -12,7 +12,7 @@ var places = {
 	"Speedometer": [Vector2(32, 18), Vector2(64, 4), Vector2(4800, 2700)],
 	"LapDisplay": [Vector2(32, 27), Vector2(32, 10), Vector2(3200, 2700)],
 	"ThrottleDisplay": [Vector2(32, 27), Vector2(32, 32), Vector2(3200, 2700)],
-	"CarVisu3d": [Vector2(32, 18), Vector2(-16, -3), Vector2(4800, 2700)],
+	"CarVisu3d": [Vector2(32, 18), Vector2(-16, -5), Vector2(4800, 2700)],
 	"SteeringAngle": [Vector2(32, 27), Vector2(3200, 0), Vector2(3200, 2700)]
 }
 

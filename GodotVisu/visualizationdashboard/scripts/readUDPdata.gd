@@ -72,16 +72,21 @@ func _process(delta: float) -> void:
 	var floats = decode_data(data)
 	storeDataGlobally(floats)
 	
-	Global.udpEngineRPM = round(sin(simulatedTime) * 10)
-	Global.udpEngineRPM = 3.5
-	Global.udpCurrentLapDist = fmod(simulatedTime, 10.0)
-	Global.udpCurrentLapDist = 3.0
-	Global.udpTrackDistance = 10 * 5
-	Global.udpCurrentLaptime = 703
+	var roll = str(Global.udpRoll)
+	var pitch = str(Global.udpPitch)
 	
-	Global.udpCurrentLapNumber = 1
-	Global.udpNumberOfLaps = 5
-	Global.udpGear = 2
+	print("Roll: ", roll, " | Pitch: ", pitch, ".")
 	
-	Global.udpVelocity = roundi(sin(simulatedTime) * 300)
-	Global.udpThrottle = sin(simulatedTime)
+	#Global.udpEngineRPM = round(sin(simulatedTime) * 10)
+	#Global.udpEngineRPM = 3.5
+	#Global.udpCurrentLapDist = fmod(simulatedTime, 10.0)
+	#Global.udpCurrentLapDist = 3.0
+	#Global.udpTrackDistance = 10 * 5
+	#Global.udpCurrentLaptime = 703
+	#
+	#Global.udpCurrentLapNumber = 1
+	#Global.udpNumberOfLaps = 5
+	#Global.udpGear = 2
+	#
+	#Global.udpVelocity = roundi(sin(simulatedTime) * 300)
+	#Global.udpThrottle = sin(simulatedTime)

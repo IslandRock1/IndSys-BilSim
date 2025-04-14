@@ -22,7 +22,7 @@ func _draw() -> void:
 	# drawOuterRect(50)
 	var col = RenderingServer.get_default_clear_color()
 	
-	var innerArc = 1200
+	var innerArc = 1300
 	var innerWidth = 20
 	
 	var outerWidth = 3000
