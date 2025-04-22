@@ -1,5 +1,14 @@
 extends Node2D
 
+func _ready() -> void:
+	z_index = 20
+	
+	for child in get_parent().get_children():
+		if (child.name == "LapDisplayTime"):
+			child.z_index = 25
+		elif (child.name == "curLapNum"):
+			child.z_index = 25
+
 func drawRect(size0, size1, radius):
 	var rect = Rect2(-size0 / 2, -size1 / 2, size0, size1)
 	var styleBox = StyleBoxFlat.new()
@@ -35,6 +44,31 @@ func drawInnerProgressBar(start, width):
 	draw_arc(Vector2.ZERO, start - width / 2, PI / 2, progress, 100, Color.SEA_GREEN, width)
 	return start - width
 
+func editTimeLabel():
+	var timeSeconds = fmod(Global.udpCurrentLaptime, 60.0)
+	var timeMinutes = floori(Global.udpCurrentLaptime / 60)
+	
+	var tmpText = ""
+	if timeMinutes < 10:
+		tmpText = "0"
+	
+	tmpText += str(timeMinutes)
+	tmpText += ":"
+	
+	if timeSeconds < 10:
+		tmpText += "0"
+	
+	tmpText += str(floori(timeSeconds))
+	
+	var children = get_parent().get_children()
+	var label
+	for child in children:
+		if child.name == "LapDisplayTime":
+			label = child
+	
+	label.text = tmpText
+	# add_theme_color_override("font_color", Global.textColor)
+
 func _draw() -> void:
 	# drawRect(3200.0, 2700.0, 60.0)
 	
@@ -50,3 +84,4 @@ func _draw() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	queue_redraw()
+	editTimeLabel()

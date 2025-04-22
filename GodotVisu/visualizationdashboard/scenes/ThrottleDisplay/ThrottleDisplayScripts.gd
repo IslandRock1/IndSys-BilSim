@@ -23,8 +23,8 @@ func _draw() -> void:
 	var dist = 1000
 	drawIndicator(0, 0, Global.udpThrottle)
 	
-	drawIndicator(-dist, 0, Global.udpThrottle)
-	drawIndicator(dist, 0, Global.udpThrottle)
+	drawIndicator(-dist, 0, Global.udpClutchEngaement)
+	drawIndicator(dist, 0, Global.udpBrakeEngagement)
 
 func _process(_delta: float) -> void:
 	queue_redraw()

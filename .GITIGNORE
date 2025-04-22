@@ -13,3 +13,4 @@
 *.cache
 *.bin
 *.bootinfo
+*.bootinfo_guids

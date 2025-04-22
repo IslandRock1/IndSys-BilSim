@@ -8,5 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	text = str(Global.udpNumberOfLaps)
-	position = Vector2(100, 200)
+	text = str(roundi(Global.udpCurrentLapNumber + 1)) + "/" + str(roundi(Global.udpNumberOfLaps))
+	position = Vector2(-size.x / 2, 200)
+	
+	add_theme_color_override("font_color", Global.textColor)

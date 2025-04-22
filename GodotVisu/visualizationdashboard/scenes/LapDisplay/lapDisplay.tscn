@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://40wk2flxvtr8"]
+[gd_scene load_steps=3 format=3 uid="uid://40wk2flxvtr8"]
 
-[ext_resource type="Script" uid="uid://c70thirpd508b" path="res://scripts/rings_lap_display.gd" id="1_cjapy"]
-[ext_resource type="Script" uid="uid://dbqo51of5hl33" path="res://scripts/lap_display_time.gd" id="2_3v4l7"]
-[ext_resource type="Script" uid="uid://cnadj7mpumc4f" path="res://scripts/cur_lap_num.gd" id="3_03lok"]
+[ext_resource type="Script" uid="uid://c70thirpd508b" path="res://scenes/LapDisplay/rings_lap_display.gd" id="1_cjapy"]
+[ext_resource type="Script" uid="uid://cnadj7mpumc4f" path="res://scenes/LapDisplay/cur_lap_num.gd" id="3_03lok"]
 
 [node name="LapDisplay" type="Node2D"]
 
@@ -18,7 +17,6 @@ theme_override_font_sizes/font_size = 200
 text = "Hello"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("2_3v4l7")
 
 [node name="curLapNum" type="Label" parent="."]
 offset_right = 131.0

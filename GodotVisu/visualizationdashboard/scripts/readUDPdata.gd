@@ -72,10 +72,12 @@ func _process(delta: float) -> void:
 	var floats = decode_data(data)
 	storeDataGlobally(floats)
 	
-	var roll = str(Global.udpRoll)
-	var pitch = str(Global.udpPitch)
-	
-	print("Roll: ", roll, " | Pitch: ", pitch, ".")
+	if (len(floats) > 60):
+		var roll0 = floats[11]
+		var roll1 = floats[12]
+		var roll2 = floats[13]
+		
+		print("Val0: ", roll0, " | Val1: ", roll1, " | Val2: ", roll2)
 	
 	#Global.udpEngineRPM = round(sin(simulatedTime) * 10)
 	#Global.udpEngineRPM = 3.5

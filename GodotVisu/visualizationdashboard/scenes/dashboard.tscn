@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://cpmbinkpmg1ar"]
 
 [ext_resource type="Script" uid="uid://n7pcj01kxxbh" path="res://scripts/readUDPdata.gd" id="1_bi3rc"]
-[ext_resource type="PackedScene" uid="uid://dadafubnipytc" path="res://scenes/speedometer.tscn" id="3_meibj"]
+[ext_resource type="PackedScene" uid="uid://dadafubnipytc" path="res://scenes/Speedometer/speedometer.tscn" id="3_meibj"]
 [ext_resource type="Script" uid="uid://dd0yw316y0c3y" path="res://scripts/controlDashboard.gd" id="3_nysx1"]
-[ext_resource type="PackedScene" uid="uid://40wk2flxvtr8" path="res://scenes/lapDisplay.tscn" id="4_nysx1"]
-[ext_resource type="PackedScene" uid="uid://bqledcrq6yvik" path="res://scenes/throttleDisplay.tscn" id="5_gj1ct"]
-[ext_resource type="PackedScene" uid="uid://ctr22p8laquv1" path="res://scenes/CarVisu3D.tscn" id="6_f3nql"]
-[ext_resource type="PackedScene" uid="uid://vainpql571a8" path="res://scenes/SteeringAngle.tscn" id="7_bjcq8"]
+[ext_resource type="PackedScene" uid="uid://40wk2flxvtr8" path="res://scenes/LapDisplay/lapDisplay.tscn" id="4_nysx1"]
+[ext_resource type="PackedScene" uid="uid://bqledcrq6yvik" path="res://scenes/ThrottleDisplay/throttleDisplay.tscn" id="5_gj1ct"]
+[ext_resource type="PackedScene" uid="uid://ctr22p8laquv1" path="res://scenes/CarVisu3D/CarVisu3D.tscn" id="6_f3nql"]
+[ext_resource type="PackedScene" uid="uid://vainpql571a8" path="res://scenes/Steering/SteeringAngle.tscn" id="7_bjcq8"]
 
 [sub_resource type="GDScript" id="GDScript_bi3rc"]
 script/source = "extends Camera2D
@@ -45,13 +45,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("3_nysx1")
 
-[node name="Speedometer" parent="Control" instance=ExtResource("3_meibj")]
-position = Vector2(-260, -120)
-
-[node name="LapDisplay" parent="Control" instance=ExtResource("4_nysx1")]
-
-[node name="ThrottleDisplay" parent="Control" instance=ExtResource("5_gj1ct")]
-
 [node name="CarVisu3d" parent="Control" instance=ExtResource("6_f3nql")]
 layout_mode = 0
 anchors_preset = 0
@@ -67,3 +60,10 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="SteeringAngle" parent="Control" instance=ExtResource("7_bjcq8")]
+
+[node name="Speedometer" parent="Control" instance=ExtResource("3_meibj")]
+position = Vector2(-260, -120)
+
+[node name="LapDisplay" parent="Control" instance=ExtResource("4_nysx1")]
+
+[node name="ThrottleDisplay" parent="Control" instance=ExtResource("5_gj1ct")]

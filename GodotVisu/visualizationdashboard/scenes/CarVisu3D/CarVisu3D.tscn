@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctr22p8laquv1"]
 
-[ext_resource type="Script" uid="uid://g7cnq1wfvyi6" path="res://scripts/border_3d_visu.gd" id="1_auijq"]
-[ext_resource type="Script" uid="uid://c563pwlpn2g8k" path="res://scripts/mesh_instance_3dplatform.gd" id="1_i2j3r"]
-[ext_resource type="Script" uid="uid://dsoh6ssys1dc5" path="res://scripts/backgroundGrid.gd" id="1_wfn2m"]
-[ext_resource type="Script" uid="uid://m7wyup4snanf" path="res://scripts/camera_3d.gd" id="2_qsofs"]
+[ext_resource type="Script" uid="uid://g7cnq1wfvyi6" path="res://scenes/CarVisu3D/border_3d_visu.gd" id="1_auijq"]
+[ext_resource type="Script" uid="uid://c563pwlpn2g8k" path="res://scenes/CarVisu3D/mesh_instance_3dplatform.gd" id="1_i2j3r"]
+[ext_resource type="Script" uid="uid://dsoh6ssys1dc5" path="res://scenes/CarVisu3D/backgroundGrid.gd" id="1_wfn2m"]
+[ext_resource type="Script" uid="uid://m7wyup4snanf" path="res://scenes/CarVisu3D/camera_3d.gd" id="2_qsofs"]
 [ext_resource type="ArrayMesh" uid="uid://bvre66mgkmvml" path="res://assets/BilSimPlatform v1.obj" id="3_wmbl8"]
 
 [sub_resource type="Environment" id="Environment_auijq"]
