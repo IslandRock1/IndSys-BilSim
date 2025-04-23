@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	text = str(roundi(Global.udpGear))
 	position = Vector2(size.x * 2.3, size.y * 0.5)
 

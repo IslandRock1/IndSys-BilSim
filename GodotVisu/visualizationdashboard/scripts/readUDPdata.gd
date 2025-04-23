@@ -7,15 +7,15 @@ var port = 20777
 @onready var previous_window = DisplayServer.window_get_mode()
 @onready var current_window = DisplayServer.window_get_mode()
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		current_window = DisplayServer.window_get_mode()
-		if current_window != 4:
+		if current_window != DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
 			previous_window = current_window
-			DisplayServer.window_set_mode(4)
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 		else:
-			if previous_window == 4:
-				previous_window = 2
+			if previous_window == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+				previous_window = DisplayServer.WINDOW_MODE_MAXIMIZED
 			DisplayServer.window_set_mode(previous_window)
 
 # Called when the node enters the scene tree for the first time.

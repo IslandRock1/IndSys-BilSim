@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpmbinkpmg1ar"]
+[gd_scene load_steps=10 format=3 uid="uid://cpmbinkpmg1ar"]
 
 [ext_resource type="Script" uid="uid://n7pcj01kxxbh" path="res://scripts/readUDPdata.gd" id="1_bi3rc"]
 [ext_resource type="PackedScene" uid="uid://dadafubnipytc" path="res://scenes/Speedometer/speedometer.tscn" id="3_meibj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bqledcrq6yvik" path="res://scenes/ThrottleDisplay/throttleDisplay.tscn" id="5_gj1ct"]
 [ext_resource type="PackedScene" uid="uid://ctr22p8laquv1" path="res://scenes/CarVisu3D/CarVisu3D.tscn" id="6_f3nql"]
 [ext_resource type="PackedScene" uid="uid://vainpql571a8" path="res://scenes/Steering/SteeringAngle.tscn" id="7_bjcq8"]
+[ext_resource type="Script" uid="uid://c8bk5k8y4a5so" path="res://scenes/fps_label.gd" id="8_e5s8x"]
 
 [sub_resource type="GDScript" id="GDScript_bi3rc"]
 script/source = "extends Camera2D
@@ -20,7 +21,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var screen_size = get_viewport_rect().size
 	var base_resolution = Vector2(1920, 1080)
 	zoom = screen_size / base_resolution
@@ -67,3 +68,16 @@ position = Vector2(-260, -120)
 [node name="LapDisplay" parent="Control" instance=ExtResource("4_nysx1")]
 
 [node name="ThrottleDisplay" parent="Control" instance=ExtResource("5_gj1ct")]
+
+[node name="FPSLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 100
+text = "FPS: 60.0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_e5s8x")

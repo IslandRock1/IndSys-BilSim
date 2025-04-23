@@ -1,8 +1,8 @@
 extends Control
 
-var cell_size = 20
-var columns = 1920 / cell_size
-var rows = 1080 / cell_size
+var cell_size = 20.0
+var columns = 1920.0 / cell_size
+var rows = 1080.0 / cell_size
 var top_left = Vector2(columns, rows) * cell_size * (-0.5)
 #name: [Vector(width (rows), height (cols)), posX (rows), posY (cols), 
 #              currentHeight (pixels), currentWidth, (pixels)]
@@ -13,7 +13,8 @@ var places = {
 	"LapDisplay": [Vector2(32, 27), Vector2(32, 10), Vector2(3200, 2700)],
 	"ThrottleDisplay": [Vector2(32, 27), Vector2(32, 36), Vector2(3200, 2700)],
 	"CarVisu3d": [Vector2(32, 18), Vector2(-16, -5), Vector2(4800, 2700)],
-	"SteeringAngle": [Vector2(32, 27), Vector2(32, 10), Vector2(3200, 2700)]
+	"SteeringAngle": [Vector2(32, 27), Vector2(32, 10), Vector2(3200, 2700)],
+	"FPSLabel": [Vector2(8, 8), Vector2(10, 0), Vector2(1000, 1000)]
 }
 
 func _draw() -> void:
@@ -45,7 +46,7 @@ func update_size() -> void:
 		place(child)
 	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if size != get_viewport_rect().size:
 		size = get_viewport_rect().size
 		update_size()

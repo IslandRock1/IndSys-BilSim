@@ -14,13 +14,13 @@ func drawArm(angle):
 	"""
 	
 	var color = Color(1.0, 0.361, 0.882)
-	var size = 1500
-	var width = 200
+	var size = 1500.0
+	var width = 200.0
 	
-	var topRight = Vector2(width / 2, 0)
-	var bottomRight = Vector2(width / 2, size)
-	var bottomLeft = Vector2(-width / 2, size)
-	var topLeft = Vector2(-width / 2, 0)
+	var topRight = Vector2(width / 2.0, 0)
+	var bottomRight = Vector2(width / 2.0, size)
+	var bottomLeft = Vector2(-width / 2.0, size)
+	var topLeft = Vector2(-width / 2.0, 0)
 	var points = [topRight, bottomRight, bottomLeft, topLeft]
 	
 	for i in range(4):
@@ -49,5 +49,5 @@ func _draw() -> void:
 	drawSteeringWheel(angle)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	queue_redraw()

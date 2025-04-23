@@ -21,30 +21,34 @@ func drawOuterRect(squareWidth):
 func _draw() -> void:
 	var col = Global.colorBackgroundBoxes
 	
-	var innerArc = 1300
-	var innerWidth = 20
+	var innerArc = 1300.0
+	var innerWidth = 20.0
 	
-	var outerWidth = 3000
-	var outerArc = innerArc + innerWidth / 2 + outerWidth / 2
+	var outerWidth = 3000.0
+	var outerArc = innerArc + innerWidth / 2.0 + outerWidth / 2.0
 	
-	draw_arc(Vector2(4800 / 2, 2700 / 2), innerArc, 0, 2 * PI, 1000, Color.BLACK, innerWidth)
-	draw_arc(Vector2(4800 / 2, 2700 / 2), outerArc, 0, 2 * PI, 1000, col, outerWidth)
+	draw_arc(Vector2(4800.0 / 2.0, 2700.0 / 2.0), innerArc, 0, 2 * PI, 1000, Color.BLACK, innerWidth)
+	draw_arc(Vector2(4800.0 / 2.0, 2700.0 / 2.0), outerArc, 0, 2 * PI, 1000, col, outerWidth)
 	
 	var basePoints = []
 	var radius = 100.0
-	var scale = 100.0
-	for a in range(0, scale * PI / 2):
+	var scaleLocal = 100.0
+	
+	var x
+	var y
+	var angle
+	for a in range(0, scaleLocal * PI / 2):
 		
-		var angle = float(a) / scale
-		var x = sin(angle) * radius
-		var y = cos(angle) * radius
+		angle = float(a) / scaleLocal
+		x = sin(angle) * radius
+		y = cos(angle) * radius
 		var p = Vector2(x, y)
 		
 		basePoints.append(p)
 	
-	var angle = PI / 2
-	var x = sin(angle) * radius
-	var y = cos(angle) * radius
+	angle = PI / 2
+	x = sin(angle) * radius
+	y = cos(angle) * radius
 	basePoints.append(Vector2(x, y))
 	
 	var points = []
@@ -76,7 +80,7 @@ func _draw() -> void:
 	
 	var newPoints = []
 	
-	var sizeVec = Vector2(4800 / 2, 2700 / 2)
+	var sizeVec = Vector2(4800.0 / 2.0, 2700.0 / 2.0)
 	points.reverse()
 	for p in points:
 		var newP = (p - sizeVec) * 0.99 + sizeVec
@@ -94,8 +98,3 @@ func _draw() -> void:
 func _ready() -> void:
 	show_behind_parent = true
 	z_index = 10
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
