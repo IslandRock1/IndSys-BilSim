@@ -71,24 +71,3 @@ func _process(delta: float) -> void:
 	var data = udp.get_packet()
 	var floats = decode_data(data)
 	storeDataGlobally(floats)
-	
-	if (len(floats) > 60):
-		var roll0 = floats[11]
-		var roll1 = floats[12]
-		var roll2 = floats[13]
-		
-		print("Val0: ", roll0, " | Val1: ", roll1, " | Val2: ", roll2)
-	
-	#Global.udpEngineRPM = round(sin(simulatedTime) * 10)
-	#Global.udpEngineRPM = 3.5
-	#Global.udpCurrentLapDist = fmod(simulatedTime, 10.0)
-	#Global.udpCurrentLapDist = 3.0
-	#Global.udpTrackDistance = 10 * 5
-	#Global.udpCurrentLaptime = 703
-	#
-	#Global.udpCurrentLapNumber = 1
-	#Global.udpNumberOfLaps = 5
-	#Global.udpGear = 2
-	#
-	#Global.udpVelocity = roundi(sin(simulatedTime) * 300)
-	#Global.udpThrottle = sin(simulatedTime)
