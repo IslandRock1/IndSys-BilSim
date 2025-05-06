@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqledcrq6yvik"]
+
+[ext_resource type="Script" uid="uid://chnlv3qptkq0w" path="res://scenes/ThrottleDisplay/ThrottleDisplayScripts.gd" id="1_qh4mt"]
+[ext_resource type="Script" uid="uid://b1e5ixfwbrwmj" path="res://scenes/ThrottleDisplay/gass.gd" id="2_4pvbt"]
+[ext_resource type="Script" uid="uid://dyd0b6wwwtyt4" path="res://scenes/ThrottleDisplay/brake.gd" id="3_lf7ao"]
+[ext_resource type="Script" uid="uid://c5hie0lkkmqrl" path="res://scenes/ThrottleDisplay/clutch.gd" id="4_552dh"]
+
+[node name="ThrottleDisplay" type="Node2D"]
+
+[node name="Scripts" type="Node2D" parent="."]
+script = ExtResource("1_qh4mt")
+
+[node name="Gass" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 150
+script = ExtResource("2_4pvbt")
+
+[node name="Brake" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 150
+script = ExtResource("3_lf7ao")
+
+[node name="Clutch" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 150
+script = ExtResource("4_552dh")

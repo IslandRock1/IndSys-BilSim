@@ -29,9 +29,9 @@ var maxCarSpeed = 300.0
 
 ### Speedometer Variables ###
 var speedometerAngleSize = 270.0
-var speedometerBorderColor = Color.BLACK
-var speedometerBGColor = Color.WHITE
 
 
 ### Color variables ###
-var MainColor = Color(255, 0, 150)
+var colorBackgroundBoxes = Color(0.4, 0.4, 0.4)
+var colorWhite = Color.WHITE
+var textColor = Color.WHITE

@@ -8,3 +8,9 @@
 *.precompilecache
 *.opt
 *.DFR
+*.exe
+*.cfg
+*.cache
+*.bin
+*.bootinfo
+*.bootinfo_guids

@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctr22p8laquv1"]
+
+[ext_resource type="Script" uid="uid://g7cnq1wfvyi6" path="res://scenes/CarVisu3D/border_3d_visu.gd" id="1_auijq"]
+[ext_resource type="Script" uid="uid://c563pwlpn2g8k" path="res://scenes/CarVisu3D/mesh_instance_3dplatform.gd" id="1_i2j3r"]
+[ext_resource type="Script" uid="uid://dsoh6ssys1dc5" path="res://scenes/CarVisu3D/backgroundGrid.gd" id="1_wfn2m"]
+[ext_resource type="Script" uid="uid://m7wyup4snanf" path="res://scenes/CarVisu3D/camera_3d.gd" id="2_qsofs"]
+[ext_resource type="ArrayMesh" uid="uid://bvre66mgkmvml" path="res://assets/BilSimPlatform v1.obj" id="3_wmbl8"]
+
+[sub_resource type="Environment" id="Environment_auijq"]
+background_mode = 1
+
+[node name="CarVisu3d" type="SubViewportContainer"]
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Border3DVisu" type="Node2D" parent="."]
+script = ExtResource("1_auijq")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1000, 1000)
+render_target_update_mode = 4
+
+[node name="CenterPlacement" type="Node3D" parent="SubViewport"]
+
+[node name="MainNode" type="Node3D" parent="SubViewport/CenterPlacement"]
+
+[node name="Background" type="Node3D" parent="SubViewport/CenterPlacement/MainNode"]
+script = ExtResource("1_wfn2m")
+
+[node name="Platform" type="Node3D" parent="SubViewport/CenterPlacement/MainNode"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/CenterPlacement/MainNode/Platform"]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0)
+mesh = ExtResource("3_wmbl8")
+script = ExtResource("1_i2j3r")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/CenterPlacement/MainNode"]
+transform = Transform3D(1, 0, 0, 0, 0.0964539, 0.995337, 0, -0.995337, 0.0964539, 0, 6.20123, 0.0163832)
+visible = false
+environment = SubResource("Environment_auijq")
+script = ExtResource("2_qsofs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/CenterPlacement/MainNode"]
+transform = Transform3D(0.264445, 0.570188, -0.777788, -0.106054, 0.818801, 0.564197, 0.958552, -0.0667112, 0.276999, -4.41656, 1.87587, 0.987839)
+light_energy = 2.0

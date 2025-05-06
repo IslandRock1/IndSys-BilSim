@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://40wk2flxvtr8"]
+
+[ext_resource type="Script" uid="uid://c70thirpd508b" path="res://scenes/LapDisplay/rings_lap_display.gd" id="1_cjapy"]
+[ext_resource type="Script" uid="uid://cnadj7mpumc4f" path="res://scenes/LapDisplay/cur_lap_num.gd" id="3_03lok"]
+
+[node name="LapDisplay" type="Node2D"]
+
+[node name="RingsLapDisplay" type="Node2D" parent="."]
+script = ExtResource("1_cjapy")
+
+[node name="LapDisplayTime" type="Label" parent="."]
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 500.0
+offset_bottom = 500.0
+theme_override_font_sizes/font_size = 200
+text = "Hello"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="curLapNum" type="Label" parent="."]
+offset_right = 131.0
+offset_bottom = 137.0
+theme_override_font_sizes/font_size = 100
+script = ExtResource("3_03lok")
