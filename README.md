@@ -16,7 +16,7 @@ Car simulation platform aimed at development, and educational applications. Its 
 - **PLC Platform:** WAGO (CODESYS compatible)
 - **Motors:** 3 × MAC 800 (EtherCAT)
 - **HMI(Bejer):** 
-- **Visualization(Bejer):** Gedot
+- **Visualization:** Godot, Beijer, and Codesys
 
 ## Installation & Setup
 
