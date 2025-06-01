@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctr22p8laquv1"]
 
 [ext_resource type="Script" uid="uid://g7cnq1wfvyi6" path="res://scenes/CarVisu3D/border_3d_visu.gd" id="1_auijq"]
-[ext_resource type="Script" uid="uid://c563pwlpn2g8k" path="res://scenes/CarVisu3D/mesh_instance_3dplatform.gd" id="1_i2j3r"]
 [ext_resource type="Script" uid="uid://dsoh6ssys1dc5" path="res://scenes/CarVisu3D/backgroundGrid.gd" id="1_wfn2m"]
 [ext_resource type="Script" uid="uid://m7wyup4snanf" path="res://scenes/CarVisu3D/camera_3d.gd" id="2_qsofs"]
-[ext_resource type="ArrayMesh" uid="uid://bvre66mgkmvml" path="res://assets/BilSimPlatform v1.obj" id="3_wmbl8"]
+[ext_resource type="Script" uid="uid://dd2iiv7vi8ynv" path="res://assets/audi_r_8_2017.gd" id="4_6pah3"]
+[ext_resource type="PackedScene" uid="uid://d2goh7sfcef3g" path="res://assets/Audi_R8_2017.glb" id="4_fdejo"]
 
 [sub_resource type="Environment" id="Environment_auijq"]
 background_mode = 1
@@ -41,13 +41,12 @@ render_target_update_mode = 4
 
 [node name="Background" type="Node3D" parent="SubViewport/CenterPlacement/MainNode"]
 script = ExtResource("1_wfn2m")
+grid_color = Color(0.827122, 0.00165955, 0.961356, 1)
 
-[node name="Platform" type="Node3D" parent="SubViewport/CenterPlacement/MainNode"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewport/CenterPlacement/MainNode/Platform"]
-transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 0, 0)
-mesh = ExtResource("3_wmbl8")
-script = ExtResource("1_i2j3r")
+[node name="Audi_R8_2017" parent="SubViewport/CenterPlacement/MainNode" instance=ExtResource("4_fdejo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0621438, -2.50136, 0.174823)
+script = ExtResource("4_6pah3")
+new_color = Color(4.62055e-06, 0.730921, 0.991543, 1)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/CenterPlacement/MainNode"]
 transform = Transform3D(1, 0, 0, 0, 0.0964539, 0.995337, 0, -0.995337, 0.0964539, 0, 6.20123, 0.0163832)
