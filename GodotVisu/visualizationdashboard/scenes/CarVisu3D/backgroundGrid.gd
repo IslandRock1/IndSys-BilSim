@@ -6,6 +6,7 @@ extends Node3D
 @export var line_width := 0.2   # Thickness of grid lines
 @export var height := -3.0       # Y position of the grid
 
+
 func _ready():
 	var half_size = (grid_size * cell_size) / 2.0
 

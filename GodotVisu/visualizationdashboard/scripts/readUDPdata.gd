@@ -71,3 +71,7 @@ func _process(delta: float) -> void:
 	var data = udp.get_packet()
 	var floats = decode_data(data)
 	storeDataGlobally(floats)
+	
+	# Simulate roll and pitch when not using simulator
+	#Global.udpPitch = 0.3 * sin(simulatedTime)
+	#Global.udpRoll = 0.3 * cos(simulatedTime)

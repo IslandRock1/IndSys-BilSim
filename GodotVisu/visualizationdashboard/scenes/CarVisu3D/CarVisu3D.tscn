@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://g7cnq1wfvyi6" path="res://scenes/CarVisu3D/border_3d_visu.gd" id="1_auijq"]
 [ext_resource type="Script" uid="uid://dsoh6ssys1dc5" path="res://scenes/CarVisu3D/backgroundGrid.gd" id="1_wfn2m"]
 [ext_resource type="Script" uid="uid://m7wyup4snanf" path="res://scenes/CarVisu3D/camera_3d.gd" id="2_qsofs"]
-[ext_resource type="Script" uid="uid://dd2iiv7vi8ynv" path="res://assets/audi_r_8_2017.gd" id="4_6pah3"]
+[ext_resource type="Script" uid="uid://dd2iiv7vi8ynv" path="res://scenes/CarVisu3D/audi_r_8_2017.gd" id="4_6pah3"]
 [ext_resource type="PackedScene" uid="uid://d2goh7sfcef3g" path="res://assets/Audi_R8_2017.glb" id="4_fdejo"]
 
 [sub_resource type="Environment" id="Environment_auijq"]
@@ -41,7 +41,7 @@ render_target_update_mode = 4
 
 [node name="Background" type="Node3D" parent="SubViewport/CenterPlacement/MainNode"]
 script = ExtResource("1_wfn2m")
-grid_color = Color(0.827122, 0.00165955, 0.961356, 1)
+grid_color = Color(1, 0.360784, 0.882353, 1)
 
 [node name="Audi_R8_2017" parent="SubViewport/CenterPlacement/MainNode" instance=ExtResource("4_fdejo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0621438, -2.50136, 0.174823)
@@ -57,3 +57,4 @@ script = ExtResource("2_qsofs")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/CenterPlacement/MainNode"]
 transform = Transform3D(0.264445, 0.570188, -0.777788, -0.106054, 0.818801, 0.564197, 0.958552, -0.0667112, 0.276999, -4.41656, 1.87587, 0.987839)
 light_energy = 2.0
+shadow_enabled = true
