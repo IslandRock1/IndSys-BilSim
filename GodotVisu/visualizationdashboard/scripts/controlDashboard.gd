@@ -1,13 +1,25 @@
 extends Control
 
+# The controlDashboard.gd file is attatched to the Control node
+# This file is mainly placing the subscenes on the screen, making it easy
+# to move and scale these elements.
+
+# The first iteration it will configure some screen size variables,
+# then place all children on the screen. For every later iteration,
+# it will check if the window size has changed, and if so, it will
+# place children again.
+
+# The 'places' lookup table makes configuring easy, by using a grid
+# placement method. This can also scale sub-elements to whatever size
+# one wants.
+
 var cell_size = 20.0
 var columns = 1920.0 / cell_size
 var rows = 1080.0 / cell_size
 var top_left = Vector2(columns, rows) * cell_size * (-0.5)
+
 #name: [Vector(width (rows), height (cols)), posX (rows), posY (cols), 
 #              currentHeight (pixels), currentWidth, (pixels)]
-
-# name : [Width/Height vector, pos vector, currentInfo vector (height, width
 var places = {
 	"Speedometer": [Vector2(32, 18), Vector2(64, 4), Vector2(4800, 2700)],
 	"LapDisplay": [Vector2(32, 27), Vector2(32, 10), Vector2(3200, 2700)],
@@ -38,13 +50,10 @@ func update_size() -> void:
 	var new_size = get_viewport_rect().size
 	columns = new_size.x / cell_size
 	rows = new_size.y / cell_size
-	
-	print("Updated size")
-	print("Columns: ", columns, " | Rows: ", rows, ".")
-	
+
 	for child in get_children():
 		place(child)
-	
+
 
 func _process(_delta: float) -> void:
 	if size != get_viewport_rect().size:

@@ -1,5 +1,9 @@
 extends Control
 
+# The readUDPdata.gd file is attatched to the Dashboard node
+# This file is mainly responsible for reading in the UDP data,
+# but also toggles fullscreen on F11.
+
 var simulatedTime = 0.0
 var udp = PacketPeerUDP.new()
 var port = 20777
@@ -41,8 +45,8 @@ func storeDataGlobally(decodedFloats: Array) -> void:
 	Global.udpCurrentLapDist = decodedFloats[2]
 	Global.udpDistanceDrivenOverall = decodedFloats[3]
 	Global.udpVelocity = decodedFloats[7] * 3.6
-	Global.udpRoll = decodedFloats[11]
-	Global.udpPitch = decodedFloats[14]
+	Global.udpRoll = decodedFloats[12]
+	Global.udpPitch = decodedFloats[15]
 	Global.udpThrottle = decodedFloats[29]
 	Global.udpSteeringAngle = decodedFloats[30]
 	Global.udpBrakeEngagement = decodedFloats[31]
@@ -58,6 +62,7 @@ func storeDataGlobally(decodedFloats: Array) -> void:
 	Global.udpTrackDistance = decodedFloats[61]
 
 func printInfo() -> void:
+	# Debug printing
 	print("LapTime:", Global.udpCurrentLaptime, "| Gear:", Global.udpGear)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

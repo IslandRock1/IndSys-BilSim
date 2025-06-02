@@ -12,6 +12,8 @@
 [sub_resource type="GDScript" id="GDScript_bi3rc"]
 script/source = "extends Camera2D
 
+# Just a simple file to control the zoom on the camera based
+# on the screen size and resolution.
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
