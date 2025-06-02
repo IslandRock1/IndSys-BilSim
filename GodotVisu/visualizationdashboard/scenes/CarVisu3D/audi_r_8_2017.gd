@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 	# Pitch => X
 	# Rolll => Z
 	
-	rotation = Vector3(Global.udpPitch, 0, Global.udpRoll)
+	rotation = Vector3(-Global.udpPitch, 0, -Global.udpRoll)
 	
 	#rotate_x(Global.udpPitch - prevPitch)
 	#rotate_z(Global.udpRoll - prevRoll)
