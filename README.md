@@ -40,9 +40,16 @@ Car simulation platform aimed at development, and educational applications. Its 
 5. **Run Gedot Visualization**
    - Open the Gedot visualization project.
    - Connect to the PLC to monitor and control the simulation.
-
+  
 ## Usage
 
 - Use the Gedot interface for real-time monitoring, control, and calibration.
 - Access security functions to manage user permissions and safe states.
 - Calibrate motors as needed using provided tools or visualization interface.
+
+
+
+
+https://github.com/user-attachments/assets/4b8991dd-1694-4517-b9f1-0ab56654d6bb
+
+
