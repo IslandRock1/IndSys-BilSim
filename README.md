@@ -1,11 +1,11 @@
 # IndSys-BilSim
 
-Car simulation platform aimed at development, and educational applications. Its is built using CODESYS running on WAGO PLC hardware, with a visualization layer provided by Gedot. The simulator uze to control and monitor three MAC 800 motors using EtherCAT communication.
+Car simulation platform aimed at development, and educational applications. Its is built using CODESYS running on WAGO PLC hardware, with a visualization layer provided by Godot. The simulator uze to control and monitor three MAC 800 motors using EtherCAT communication.
 
 ## Features
 
 - **CODESYS-based Automation:** Developed for WAGO PLCs in CODESYS.
-- **Gedot Visualization:** Real-time monitoring.
+- **Godot Visualization:** Real-time monitoring.
 - **EtherCAT Communication:** Controls three MAC 800 motors with Ethercat.
 - **Security Functions:** Ensures safe operation and access control.
 - **Calibration Utilities:** Tools for precise setup and adjustment of motors using limit switches.
@@ -39,13 +39,13 @@ Car simulation platform aimed at development, and educational applications. Its 
 
 5. **Run Gedot Visualization**
    - Open the Gedot visualization project.
-   - Connect to the PLC to monitor and control the simulation.
+   - Connect to the PC to monitor and control the simulation.
   
 ## Usage
 
-- Use the Gedot interface for real-time monitoring, control, and calibration.
+- Use the Godot interface for real-time monitoring, control, and calibration.
 - Access security functions to manage user permissions and safe states.
-- Calibrate motors as needed using provided tools or visualization interface.
+- Calibrate motors as needed using provided tools.
 
 
 
